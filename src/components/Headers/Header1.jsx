@@ -40,7 +40,7 @@ const Header1 = ({
         backgroundRepeat: "no-repeat",
         position: "relative",
         cursor: "grab",
-        overflow:"hidden"
+        overflow: "hidden",
       }}
     >
       <Delete
@@ -49,12 +49,11 @@ const Header1 = ({
         index={index}
       />
 
-      <Edit 
+      <Edit
         isEdit={isEdit}
         handlebtnEditComponent={() => setEditableIndex(index)}
         index={index}
-         />
-
+      />
 
       <img
         style={{

@@ -23,10 +23,10 @@ const BoxContent = ({
       // onDragEnd={handleDragEnd}
       style={{
         height: "100vh",
-        width: "100vw",
+        // width: "100vw",
         cursor: "grab",
         position: "relative",
-        overflow:"hidden"
+        overflow: "hidden",
       }}
       onDoubleClick={() => setEditableIndex(index)}
       className=" p-5"
@@ -37,11 +37,11 @@ const BoxContent = ({
         index={index}
       />
 
-      <Edit 
+      <Edit
         isEdit={isEdit}
         handlebtnEditComponent={() => setEditableIndex(index)}
         index={index}
-         />
+      />
 
       <div className="text-center">
         <h1 className="wdi-fw-500 fs-1 p-3">

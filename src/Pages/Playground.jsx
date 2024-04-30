@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import ViewAgendaTwoToneIcon from "@mui/icons-material/ViewAgendaTwoTone";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
@@ -10,6 +11,8 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { useDispatch } from "react-redux";
 import { uppdateHomeScreen } from "../redux/slice/fetchScreen";
 import SaveOutlinedIcon from "@mui/icons-material/SaveOutlined";
+import Awards from "../components/Awards/Awards";
+import Form from "../components/Form/Form";
 
 export const screenElement = [
   {
@@ -32,6 +35,43 @@ export const screenElement = [
       subTitle: `Partner with us for tailored software solutions. Your success is our priority`,
       BtnTitle: "Stay level up with AI & ML",
       BtnLink: "",
+    },
+  },
+  {
+    icon: <ViewAgendaTwoToneIcon className="text-white" />,
+    title: "Awards",
+    elements: {
+      type: "Awards",
+      title: `Awards & Recognition`,
+      subTitle: `Our talented team of developers, designers, and engineers has consistently demonstrated a dedication to pushing the boundaries of what is possible in the digital landscape. 
+                From prestigious industry awards to client testimonials, 
+                this section reflects the tangible impact of our work`,
+      BtnTitle: "",
+      BtnLink: "",
+    },
+  },
+  {
+    icon: <ViewAgendaTwoToneIcon className="text-white" />,
+    title: "Forms",
+    elements: {
+      type: "Forms",
+      title: `Let's Collaborate to Shape your Vision into Reality`,
+      subTitle: `Open for hiring`,
+      paragraph: `"Join our dynamic team of innovators, where your passion for code meets limitless possibilities. 
+      Shape the future of technology with us!"`,
+      BtnTitle: "",
+      BtnLink: "",
+      Contact: [
+        {
+          Location: `614,Palms Spring centre, Link Road, Malad (West), Mumbai - 400064`,
+        },
+        {
+          Email: `ideas@wdipl.com`,
+        },
+        {
+          Contact: `(+91) 98200 10775`,
+        },
+      ],
     },
   },
   {
@@ -77,12 +117,14 @@ export const screenElement = [
 const Playground = () => {
   const { homeScreen } = useSelector((state) => state?.screen);
   const [isLeftSideBarOpen, setIsLeftSideBarOpen] = useState(false);
-  const [screens, setScreens] = useState(homeScreen);
+  const [screens, setScreens] = useState([]);
   const [editableIndex, setEditableIndex] = useState(null);
   const [isDragOn, setIsDrapOn] = useState(false);
   const [draggedIndex, setDraggedIndex] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
   const dispatch = useDispatch();
+
+  console.log(homeScreen);
 
   const handleOpenFormElement = () => {
     setIsLeftSideBarOpen(!isLeftSideBarOpen);
@@ -96,7 +138,7 @@ const Playground = () => {
     console.log(droppedElement?.elements);
     setScreens([...screens, droppedElement?.elements]);
     dispatch(uppdateHomeScreen(screens));
-    // console.log(homeScreen);
+    console.log(homeScreen);
   };
 
   const handleDragOver = (event) => {
@@ -117,6 +159,8 @@ const Playground = () => {
     const newScreen = screens.filter((item, idx) => idx !== draggedIndex);
     newScreen.splice(index, 0, draggedItem);
     const dataWithoutNull = newScreen.filter((item) => item !== undefined);
+
+    console.log(dataWithoutNull);
     setScreens(dataWithoutNull);
     setDraggedIndex(index);
     setIsDragging(false);
@@ -187,6 +231,8 @@ const Playground = () => {
     setScreens(updatedScreens);
     setEditableIndex(null);
   };
+
+  console.log(screens);
 
   return (
     <div>
@@ -338,6 +384,50 @@ const Playground = () => {
                     handleDragEnd={handleInternalDragEnd}
                     index={index}
                     elements={component}
+                    handlebtnDeleteComponent={handlebtnDeleteComponent}
+                    // Internal editable functions
+                    setEditableIndex={setEditableIndex}
+                    isEdit={isBeingEdited}
+                  />
+                );
+              case "Awards":
+                return (
+                  <Awards
+                    index={index}
+                    screens={screens}
+                    elements={component}
+                    // Internal editable functions
+                    setEditableIndex={setEditableIndex}
+                    isEdit={isBeingEdited}
+                    // Internal drag functions
+                    handleDragStart={handleInternalDragStart}
+                    handleDragOverr={handleInternalDragOverr}
+                    handleDragEnd={handleInternalDragEnd}
+                    // Content changing functions
+                    handleTitleChange={handleTitleChange}
+                    handleSubTitleChange={handleSubTitleChange}
+                    handlebtnTitleChange={handlebtnTitleChange}
+                    handlebtnDeleteComponent={handlebtnDeleteComponent}
+                  />
+                );
+              case "Forms":
+                return (
+                  <Form
+                    index={index}
+                    screens={screens}
+                    elements={component}
+                    // Internal editable functions
+                    setEditableIndex={setEditableIndex}
+                    isEdit={isBeingEdited}
+                    // Internal drag functions
+                    handleDragStart={handleInternalDragStart}
+                    handleDragOverr={handleInternalDragOverr}
+                    handleDragEnd={handleInternalDragEnd}
+                    // Content changing functions
+                    handleTitleChange={handleTitleChange}
+                    handleSubTitleChange={handleSubTitleChange}
+                    handlebtnTitleChange={handlebtnTitleChange}
+                    handlebtnDeleteComponent={handlebtnDeleteComponent}
                   />
                 );
               default:

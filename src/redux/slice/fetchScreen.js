@@ -69,6 +69,38 @@ const screen = createSlice({
           },
         ],
       },
+      {
+        type: "Awards",
+        title: 'Awards & Recognition',
+        subTitle:
+          `Our talented team of developers, designers, 
+          and engineers has consistently demonstrated a dedication to pushing the boundaries of what is possible in the digital landscape. 
+          From prestigious industry awards to client testimonials, this section reflects the tangible impact of our work `,
+        BtnTitle: "",
+        BtnLink: "",
+      },
+      {
+        type: "Forms",
+        title: `Let's Collaborate to Shape your Vision into Reality`,
+        subTitle:
+          `Open for hiring`,
+        paragraph:
+          `"Join our dynamic team of innovators, where your passion for code meets limitless possibilities. 
+          Shape the future of technology with us!"`,
+        BtnTitle: "",
+        BtnLink: "",
+        Contact: [
+          {
+            Location: `614,Palms Spring centre, Link Road, Malad (West), Mumbai - 400064`,
+          },
+          {
+            Email: `ideas@wdipl.com`,
+          },
+          {
+            Contact: `(+91) 98200 10775`,
+          },
+        ],
+      },
     ],
     blogCards: null,
   },

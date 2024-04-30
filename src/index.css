@@ -1,53 +1,62 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif !important;
 }
 
+body {
+  overflow-x: hidden;
+}
 
-.wdi-fs-small{
+.wdi-fs-small {
   font-size: 14px !important;
 }
 
-.wdi-fs-medium{
+.wdi-fs-medium {
   font-size: 17px !important;
 }
-.wdi-fs-large{
+.wdi-fs-large {
   font-size: 19px !important;
 }
 
-
-.wdi-fw-400{
+.wdi-fw-400 {
   font-weight: 400 !important;
 }
 
-.wdi-fw-500{
+.wdi-fw-500 {
   font-weight: 500 !important;
 }
 
-.wdi-fw-600{
+.wdi-fw-600 {
   font-weight: 600 !important;
 }
 
-.wdi-fw-800{
+.wdi-fw-800 {
   font-weight: 800 !important;
 }
 
-.pointer{
+.pointer {
   cursor: pointer;
 }
 
-
 .btn {
-	animation: beat 1s infinite alternate;
-	transform-origin: center;
+  animation: beat 1s infinite alternate;
+  transform-origin: center;
 }
 
-
-@keyframes beat{
-	to { transform: scale(1.2); }
+input:focus-visible {
+  outline: none;
 }
 
+span.swiper-pagination-bullet {
+  background: crimson;
+}
+
+@keyframes beat {
+  to {
+    transform: scale(1.2);
+  }
+}
